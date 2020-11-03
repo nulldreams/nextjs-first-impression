@@ -19,14 +19,16 @@ class MyApp extends App<AppWithStore> {
 
     return (
       <Provider store={store}>
-        <MainTheme>
-          <PersistGate persistor={persistor}>
+        <PersistGate persistor={persistor}>
+          <MainTheme>
             <Component {...pageProps} />
-          </PersistGate>
-        </MainTheme>
+          </MainTheme>
+        </PersistGate>
       </Provider>
     )
   }
 }
 
-export default withRedux(store)(MyApp)
+const makestore = () => store
+
+export default withRedux(makestore)(MyApp)
