@@ -1,10 +1,11 @@
 import { AppWithStore } from '@interfaces/pages/app'
-import { makeStore } from '@redux/store'
+import { persistor, store } from '@redux/store'
 import { MainTheme } from '@theme/MainTheme'
 import withRedux from 'next-redux-wrapper'
 import App, { AppContext, AppInitialProps } from 'next/app'
 import React from 'react'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 class MyApp extends App<AppWithStore> {
   static async getInitialProps({ Component, ctx }: AppContext): Promise<AppInitialProps> {
@@ -19,11 +20,13 @@ class MyApp extends App<AppWithStore> {
     return (
       <Provider store={store}>
         <MainTheme>
-          <Component {...pageProps} />
+          <PersistGate persistor={persistor}>
+            <Component {...pageProps} />
+          </PersistGate>
         </MainTheme>
       </Provider>
     )
   }
 }
 
-export default withRedux(makeStore)(MyApp)
+export default withRedux(store)(MyApp)
