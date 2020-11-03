@@ -1,10 +1,11 @@
 import { Loading } from '@components/Loading'
-import { IDota2Heroe } from '@interfaces/api.interfaces'
 import { DefaultLayout } from '@layouts/Default'
+import { HeroesActions } from '@redux/actions/heroes.actions'
 import { styled } from '@styles/theme'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import React from 'react'
-import { useRequest } from 'src/hooks/useRequest'
+import { useDispatch } from 'react-redux'
+import { findHero } from 'src/hooks/useRequest'
 
 const HeroDiv = styled.div`
   display: flex;
@@ -39,10 +40,11 @@ const HeroName = styled.h1`
 `
 
 const HeroPage: React.FC = () => {
+  const dispatch = useDispatch()
   const { query } = useRouter()
-  const { data } = useRequest<IDota2Heroe>(`heroes?hero=${query.hero}`)
+  const hero = findHero(query.hero as string)
 
-  if (!data) {
+  if (!hero) {
     return (
       <DefaultLayout>
         <Loading />
@@ -50,16 +52,18 @@ const HeroPage: React.FC = () => {
     )
   }
 
+  dispatch(HeroesActions.SetLastHero(hero))
+
   return (
     <DefaultLayout>
       <HeroDiv>
         <Hero>
           <HeroImg>
-            <img src={data.avatar} />
-            <HeroName>{data.name}</HeroName>
+            <img src={hero.avatar} />
+            <HeroName>{hero.name}</HeroName>
           </HeroImg>
           <HeroInfo>
-            <p>{data.bio}</p>
+            <p>{hero.bio}</p>
           </HeroInfo>
         </Hero>
       </HeroDiv>

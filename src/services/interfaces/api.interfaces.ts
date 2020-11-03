@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-export interface IDota2Heroe {
+export interface IDota2Hero {
   avatar?: string
   slug?: string
   info_url?: string

@@ -1,10 +1,6 @@
 import { combineReducers } from 'redux'
-import todo, { initialState as todoState } from './todo'
-
-export const initialState = {
-  todo: todoState
-}
+import { HeroesReducer } from './heroes.reducers'
 
 export default combineReducers({
-  todo
+  dota: HeroesReducer
 })
