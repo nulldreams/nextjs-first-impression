@@ -12,10 +12,12 @@ const Card = styled.div`
   cursor: pointer;
 `
 
-export const HeroCard: React.FC<IHeroCardProps> = ({ hero }) => (
-  <Link href={`/heroes/${hero.slug}`} key={hero.slug}>
-    <Card>
-      <img src={hero.avatar} />
-    </Card>
-  </Link>
-)
+export const HeroCardRedux: React.FC<IHeroCardProps> = ({ hero }) => {
+  return (
+    <Link href={`/heroes/${hero.slug}`} key={hero.slug}>
+      <Card>
+        <img src={hero.avatar} />
+      </Card>
+    </Link>
+  )
+}

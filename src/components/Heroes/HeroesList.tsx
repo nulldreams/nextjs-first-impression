@@ -2,7 +2,7 @@ import { styled } from '@styles/theme'
 import React from 'react'
 import { findHeroes } from 'src/hooks/useRequest'
 import { Loading } from '../Loading'
-import { HeroCard } from './HeroCard'
+import { HeroCardRedux } from './HeroCardRedux'
 
 const Heroes = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ export const HeroesList: React.FC = () => {
           return (
             <HeroBox key={hero.slug}>
               <p>{hero.name}</p>
-              <HeroCard hero={hero} />
+              <HeroCardRedux hero={hero} />
             </HeroBox>
           )
         })}

@@ -8,7 +8,7 @@
         "@styles/*": ["./src/styles/*"],
         "@interfaces/*": ["./src/interfaces/*"],
         "@redux/*": ["./src/redux/*"],
-        "@reducers/*": ["./src/redux/reducers"],
+        "@reducers": ["./src/redux/reducers/index"],
         "@actions/*": ["./src/redux/actions/*"],
         "@types/*": ["./src/redux/types/*"],
         "@styled": ["./src/styles/theme.ts"]
