@@ -13,7 +13,7 @@ const Card = styled.div`
 `
 
 export const HeroCard: React.FC<IHeroCardProps> = ({ hero }) => (
-  <Link href={`/heroes/${hero.slug}`} key={hero.slug} on>
+  <Link href={`/heroes/${hero.slug}`} key={hero.slug}>
     <Card>
       <img src={hero.avatar} />
     </Card>
