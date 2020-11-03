@@ -6,8 +6,11 @@
         "@components/*": ["./src/components/*"],
         "@theme/*": ["./src/contexts/themes/*"],
         "@styles/*": ["./src/styles/*"],
-        "@interfaces/*": ["./src/services/interfaces/*"],
+        "@interfaces/*": ["./src/interfaces/*"],
         "@redux/*": ["./src/redux/*"],
+        "@reducers/*": ["./src/redux/reducers"],
+        "@actions/*": ["./src/redux/actions/*"],
+        "@types/*": ["./src/redux/types/*"],
         "@styled": ["./src/styles/theme.ts"]
     },
     "target": "es5",
